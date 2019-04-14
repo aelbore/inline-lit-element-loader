@@ -1,0 +1,36 @@
+{
+  "name": "inline-lit-element-loader",
+  "version": "0.0.1",
+  "description": "Webpack loader to inline LitElement external styles and decorators",
+  "main": "inline-loader.js",
+  "scripts": {
+    "postinstall": "npm run bundle && npm run link.loader",
+    "link.loader": "ts-node tools/link-loader.ts",
+    "bundle": "ts-node tools/build.ts",
+    "build": "webpack --mode production",
+    "serve": "ts-node tools/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aelbore/inline-lit-element-loader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aelbore/inline-lit-element-loader/issues"
+  },
+  "homepage": "https://github.com/aelbore/inline-lit-element-loader#readme",
+  "dependencies": {
+    "typescript": "^3.4.3"
+  },
+  "devDependencies": {
+    "aria-tools": "0.0.4",
+    "copy-webpack-plugin": "^5.0.2",
+    "lit-element": "^2.1.0",
+    "lit-element-transpiler": "0.0.1",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  }
+}
