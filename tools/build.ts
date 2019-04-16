@@ -6,6 +6,7 @@ import { rollup } from 'rollup'
 import { clean } from 'aria-fs'
 
 const writeFile = util.promisify(fs.writeFile)
+const copyFile = util.promisify(fs.copyFile)
 
 const typescript2 = require('rollup-plugin-typescript2');
 const resolve = require('rollup-plugin-node-resolve')
@@ -15,6 +16,10 @@ const OUTPUT_FILE = 'dist/inline-loader.js'
 
 function rollupBuild({ inputOptions, outputOptions }) {
   return rollup(inputOptions).then(bundle => bundle.write(outputOptions));
+}
+
+async function copyReadmeFile() {
+  return copyFile(path.resolve('README.md'), path.resolve('dist/README.md'))
 }
 
 async function copyPackageFile() {
@@ -68,3 +73,5 @@ const rollupConfig = {
 clean('dist')
   .then(() => rollupBuild(rollupConfig))
   .then(() => copyPackageFile())
+  .then(() => copyReadmeFile())
+  

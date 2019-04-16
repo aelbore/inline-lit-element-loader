@@ -121,8 +121,13 @@ Installation
 
     customElements.define('hello-world', HelloWorld)  
    ```
-<br />
 
+ * Run demo app 
+  ```
+  npm run serve
+  ```
+* Go to browser then `http://localhost:300/demo/hello-world`
+<br />
 
 ## Support Sass
   ```
