@@ -35,7 +35,12 @@ const rollupConfig = {
     treeshake: true,
     input: INPUT_FILE,
     external: [
-      'path', 'typescript', 'fs', 'magic-string', 'lit-element-transpiler'
+      'path', 
+      'typescript', 
+      'fs', 
+      'magic-string', 
+      'lit-element-transpiler', 
+      'minify-html-literals'
     ],
     plugins: [
       typescript2({

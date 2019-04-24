@@ -3,8 +3,8 @@ const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin');
 
-const INPUT_FILE = path.resolve('./demo/hello-world/hello-world.js')
-const OUTPUT_FILE = path.resolve('./dist/demo/hello-world/hello-world.js')
+const INPUT_FILE = path.resolve(`./demo/counter/counter.ts`)
+const OUTPUT_FILE = path.resolve(`./dist/demo/counter/counter.js`)
 
 const HTML_FILE = path.join(path.dirname(INPUT_FILE), 'index.html')
 const OUTPUT_HTML_FILE = path.join(path.dirname(OUTPUT_FILE), 'index.html')

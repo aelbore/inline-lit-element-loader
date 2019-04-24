@@ -84,8 +84,8 @@ Installation
     module: {
       rules: [
         {
-          test: /\.js$/,
-          exclude: /\.css$/,
+          test: /\.(js|ts)$/,
+          exclude: /\.(css|scss)$/,
           loader: 'inline-lit-element-loader'
         }
       ]
@@ -134,3 +134,11 @@ Installation
     npm install --save-dev node-sass
   ```
 <br />
+
+## Use Lit-Element-Transpiler
+  ```
+  git submodule init
+  git submodule update --remote
+
+  npm run link.transpiler
+  ```

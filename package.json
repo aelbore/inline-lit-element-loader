@@ -5,10 +5,14 @@
   "main": "inline-loader.js",
   "scripts": {
     "postinstall": "npm run bundle && npm run link.loader",
-    "link.loader": "ts-node tools/link-loader.ts",
-    "bundle": "ts-node tools/build.ts",
+    "link.transpiler": "ts-node --project tools/tsconfig.json tools/link-transpiler.ts && npm run build --prefix transpiler",
+    "link.loader": "ts-node --project tools/tsconfig.json tools/link-loader.ts",
+    "bundle": "ts-node --project tools/tsconfig.json tools/build.ts",
     "build": "webpack --mode production",
-    "serve": "ts-node tools/server.ts"
+    "serve": "ts-node --project tools/tsconfig.json tools/server.ts",
+    "build.hello.world.decorators": "webpack --mode production --config ./demo/decorators/hello-world/webpack.config.js",
+    "build.counter.decorators": "webpack --mode production --config ./demo/decorators/counter/webpack.config.js",
+    "build.counter": "webpack --mode production --config ./demo/counter/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -22,12 +26,15 @@
   },
   "homepage": "https://github.com/aelbore/inline-lit-element-loader#readme",
   "dependencies": {
-    "lit-element-transpiler": "0.0.1"
+    "lit-element-transpiler": "0.0.1",
+    "minify-html-literals": "^1.2.2"
   },
   "devDependencies": {
     "aria-tools": "0.0.4",
     "copy-webpack-plugin": "^5.0.2",
+    "ignore-loader": "^0.1.2",
     "lit-element": "^2.1.0",
+    "node-sass": "^4.11.0",
     "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0"
