@@ -126,7 +126,7 @@ Installation
   ```
   npm run serve
   ```
-* Go to browser then `http://localhost:300/demo/hello-world`
+* Go to browser then `http://localhost:3000/demo/hello-world`
 <br />
 
 ## Support Sass
