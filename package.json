@@ -1,6 +1,6 @@
 {
   "name": "inline-lit-element-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Webpack loader to inline LitElement external styles and decorators",
   "main": "inline-loader.js",
   "scripts": {
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/aelbore/inline-lit-element-loader#readme",
   "dependencies": {
-    "lit-element-transpiler": "0.0.1",
+    "lit-element-transpiler": "^0.0.2",
     "minify-html-literals": "^1.2.2"
   },
   "devDependencies": {
