@@ -8,4 +8,4 @@ export default function inlineLitElement(source, map) {
     return this.callback(null, result.code, map)
   }
   return this.callback(null, source, map)
-}
+} 
