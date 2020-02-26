@@ -1,11 +1,6 @@
-import { resolve } from 'path'
-import { symlinkDir, exist } from 'aria-build'
+import { symlinkDir, exec } from 'aria-build'
 
 (async function() {
-  const OUTPUT_FOLDER = resolve('dist')
-  const NODE_MODULES_FOLDER = resolve('node_modules/inline-lit-element-loader')
-
-  if (await exist(OUTPUT_FOLDER)) {
-    await symlinkDir(OUTPUT_FOLDER, NODE_MODULES_FOLDER)
-  }
+  await exec('npm run bundle')
+  await symlinkDir('./dist', './node_modules/inline-lit-element-loader')
 })()

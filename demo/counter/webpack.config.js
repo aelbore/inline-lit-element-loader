@@ -9,6 +9,9 @@ const OUTPUT_FILE = path.resolve(`./dist/demo/counter/counter.js`)
 const HTML_FILE = path.join(path.dirname(INPUT_FILE), 'index.html')
 const OUTPUT_HTML_FILE = path.join(path.dirname(OUTPUT_FILE), 'index.html')
 
+const scssVarLike = require('postcss-simple-vars')
+const cssnano = require('cssnano')
+
 const plugins = {
   terser() {
     return new TerserPlugin({
@@ -39,7 +42,11 @@ module.exports = {
       {
         test: /\.(js|ts)$/,
         exclude: /\.(css|scss)$/,
-        loader: 'inline-lit-element-loader'
+        loader: 'inline-lit-element-loader',
+        options: {
+          preprocessor: 'postcss',
+          plugins: [ scssVarLike(), cssnano() ]
+        }
       }
     ]
   },

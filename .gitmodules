@@ -1,4 +1,0 @@
-[submodule "transpiler"]
-	path = transpiler
-	branch = master
-	url = https://github.com/aelbore/lit-element-transpiler.git

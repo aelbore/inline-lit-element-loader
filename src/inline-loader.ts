@@ -1,11 +1,23 @@
-import { transpiler } from 'lit-element-transpiler'
+import { transform, MagicString } from 'lit-element-transpiler'
 import { minifyHTMLLiterals } from 'minify-html-literals'
+import { getOptions } from 'loader-utils';
 
-export default function inlineLitElement(source, map) {
+async function inlineLitElement(source, map) {
+  const callback = this.async()
   if (!this.resourcePath.includes('node_modules')) {
+    const options = getOptions(this)
     const minify = minifyHTMLLiterals(source, { fileName: this.resourcePath })
-    const result = transpiler(this.resourcePath, minify ? minify.code: source)
-    return this.callback(null, result.code, map)
+    const result = await transform(this.resourcePath, 
+      minify ? minify.code: source, 
+      { 
+        cssOptions: { 
+          ...(options ?? {}) 
+        } 
+      })
+    return callback(null, result.code, map)
   }
-  return this.callback(null, source, map)
+  const magicString = new MagicString(source)
+  return callback(null, magicString.toString(), magicString.generateMap({ hires: true }))
 } 
+
+module.exports = inlineLitElement
